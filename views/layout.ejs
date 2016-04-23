@@ -5,35 +5,43 @@
 	<title>QUIZ</title>
 	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
 	<link rel='stylesheet' type='text/css' href='/stylesheets/style.css'/>
+	<link rel='stylesheet' type='text/css' media='only screen and (min-width: 800px) and (min-device-width: 600px)' 
+		href='/stylesheets/wide.css'/>
+	<link rel='stylesheet' type='text/css'	media='only screen and (max-width: 480px)' href='/stylesheets/smartphone.css'/>
 </head>
 <body>
-	<div id="container">
-		<header>
-			<div class="nav">
-				<nav>
-					<ul class="navbar">
-						<li ><a href="/" >Inicio</a></li>
-						<li><a href="/question">Preguntas</a></li>
-						<li ><a href="/author">Autor</a></li>
-					</ul>
-				</nav>
-			</div>
+	<div id="page">
+		<header class="main">
+			<h2>Quiz<span class="no-narrow">: el juego de las preguntas</span></h2>
 		</header>
+		<div id="container">
+			<header>
+				<div>
+					<nav class="main" role="navigation">
+						<ul>
+							<li ><a href="/" >Inicio</a></li>
+							<li><a href="/question">Preguntas</a></li>
+							<li ><a href="/author">Autor</a></li>
+						</ul>
+					</nav>
+				</div>
+			</header>
 
 		<!-- <div class="main">
 	</div> -->
 
-	<section>
+	<section class="main">
 		<div>
 			<%- body %>
 		</div>
 	</section>
 
-	<footer>
-		<div class="footer">
+	<footer class="main">
+		<div>
 			<a href="https://github.com/shhx">Github del proyecto</a>
 		</div>
 	</footer>
+</div>
 </body>
 </html>
 
