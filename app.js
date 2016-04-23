@@ -7,8 +7,6 @@ var bodyParser = require('body-parser');
 var partials = require('express-partials');
 
 var routes = require('./routes/index');
-var author = require('./routes/author');
-
 
 var app = express();
 
@@ -27,8 +25,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(partials());
 
 app.use('/', routes);
-app.use('/author', author);
-
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
