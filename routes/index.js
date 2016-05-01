@@ -7,6 +7,9 @@ router.get('/', function(req, res, next) {
   res.render('index');
 });
 
+// autoload :quizId
+router.param('quizId', quizController.load); 
+
 //Question pages
 router.get('/quizzes', 							quizController.index);
 router.get('/quizzes/:quizId(\\d+)', 		quizController.show);
