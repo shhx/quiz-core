@@ -14,6 +14,9 @@ router.param('quizId', quizController.load);
 router.get('/quizzes', 							quizController.index);
 router.get('/quizzes/:quizId(\\d+)', 		quizController.show);
 router.get('/quizzes/:quizId(\\d+)/check',quizController.check);
+router.get('/quizzes/new',						quizController.new);
+router.post('/quizzes',							quizController.create);
+
 
 // Author page
 router.get('/author', function (req, res, next) {
