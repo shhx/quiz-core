@@ -105,3 +105,16 @@ exports.edit = function(req, res, next){
 	var quiz = req.quiz;
 	res.render('quizzes/edit', {quiz: quiz});
 };
+
+//DELETE /quizzes/:quizId
+exports.destroy = function(req, res, next){
+	req.quiz.destroy()
+	.then(function(){
+		req.flash('success', 'Quiz borrado con exito');
+		res.redirect('/quizzes');
+	})
+	.catch(function(error){
+		req.flash('error', 'Error al borrar el quiz'+error.message);
+		next(error);
+	});
+};
