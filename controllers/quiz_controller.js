@@ -27,6 +27,11 @@ exports.index = function(req, res, next) {
 		order: [['question', 'ASC']]
 	})
 	.then(function(quizzes){
+		console.log(req.params);
+		if (req.params.format === "json") {
+			res.send(JSON.stringify(quizzes));
+			return;
+		}
 		res.render('quizzes/index.ejs', {quizzes: quizzes});
 	})
 	.catch(function(error){
@@ -38,6 +43,10 @@ exports.index = function(req, res, next) {
 exports.show = function(req, res, next) {
 	var answer = req.query.answer || '';
 	console.log(answer);
+	if (req.params.format === "json") {
+			res.send(JSON.stringify(req.quiz));
+			return;
+		}
 	res.render('quizzes/show', {quiz: req.quiz, answer: answer});
 };
 
