@@ -44,9 +44,9 @@ exports.show = function(req, res, next) {
 	var answer = req.query.answer || '';
 	console.log(answer);
 	if (req.params.format === "json") {
-			res.send(JSON.stringify(req.quiz));
+			res.json(req.quiz);
 			return;
-		}
+	}
 	res.render('quizzes/show', {quiz: req.quiz, answer: answer});
 };
 
