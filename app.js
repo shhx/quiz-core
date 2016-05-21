@@ -32,6 +32,12 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(partials());
 app.use(flash());
 
+//Helper, req.session on views
+app.use(function (req, res, next) {
+	res.locals.session = req.session;
+	next();
+});
+
 app.use('/', routes);
 
 // catch 404 and forward to error handler
