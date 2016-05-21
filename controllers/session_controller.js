@@ -22,7 +22,7 @@ exports.create = function(req, res, next) {
 
 	authenticate(login, password)
 	.then(function(user) {
-	        req.session.user = {id:user.id, username:user.username};
+	        req.session.user = {id:user.id, username:user.username, lastlogin: new Date().getTime()};
 
 	        res.redirect("/"); // redirección a la raiz
 	})
