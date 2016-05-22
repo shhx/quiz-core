@@ -17,7 +17,7 @@ exports.load = function(req, res, next, quizId){
 
 // GET /quizzes
 exports.index = function(req, res, next) {
-	search = '';
+	var search = '';
 	if(req.query.search)
 		search = req.query.search.replace(/\s/g, '%');
 	models.Quiz.findAll({
@@ -27,9 +27,8 @@ exports.index = function(req, res, next) {
 		order: [['question', 'ASC']]
 	})
 	.then(function(quizzes){
-		console.log(req.params);
 		if (req.params.format === "json") {
-			res.send(JSON.stringify(quizzes));
+			res.json(quizzes);
 			return;
 		}
 		res.render('quizzes/index.ejs', {quizzes: quizzes});
@@ -42,7 +41,6 @@ exports.index = function(req, res, next) {
 // GET /quizzes/:id
 exports.show = function(req, res, next) {
 	var answer = req.query.answer || '';
-	console.log(answer);
 	if (req.params.format === "json") {
 			res.json(req.quiz);
 			return;
@@ -76,7 +74,7 @@ exports.create = function(req, res, next) {
 	quiz.save({fields: ["question", "answer", "AuthorId"]})
 	.then(function(quiz) {
 		req.flash('success', 'Quiz creado con exito');
-	    res.redirect('/quizzes');
+	   res.redirect('/quizzes');
 	})
 	.catch(Sequelize.ValidationError, function(error){
 		req.flash('error', 'Errores en el formulario:');
