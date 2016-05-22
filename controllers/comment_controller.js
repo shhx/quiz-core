@@ -25,7 +25,6 @@ exports.new = function(req, res, next) {
   	                         });
 };
 
-
 // POST /quizes/:quizId/comments
 exports.create = function(req, res, next) {
   var comment = models.Comment.build(

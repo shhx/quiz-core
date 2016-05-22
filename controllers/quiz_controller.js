@@ -15,6 +15,19 @@ exports.load = function(req, res, next, quizId){
 	});
 };
 
+exports.ownershipRequired = function (req, res, next) {
+	var isAdmin = req.session.user.isAdmin;
+	var quizAuthorId = req.quiz.AuthorId;
+	var loggedUserId = req.session.user.id;
+
+	if(isAdmin || quizAuthorId === loggedUserId){
+		next();
+	} else {
+		console.log("Operacion prohibida: El ususario loggeado no es el autor del quiz, ni un admin");
+		res.send(403);
+	}
+}
+
 // GET /quizzes
 exports.index = function(req, res, next) {
 	var search = '';

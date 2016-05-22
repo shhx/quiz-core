@@ -16,6 +16,31 @@ exports.load = function(req, res, next, userId) {
         .catch(function(error) { next(error); });
 };
 
+exports.adminOrMyselfRequired = function(req, res, next) {
+	var isAdmin = req.session.user.isAdmin;
+	var userId = req.user.id;
+	var loggedUserId = req.session.user.id;
+
+	if(isAdmin || userId === loggedUserId){
+		next();
+	} else {
+		console.log("Ruta prohibida: no es el usuario loggeado, ni un admin");
+		res.send(403);
+	}
+};
+
+exports.adminAndNotMyselfRequired = function(req, res, next) {
+	var isAdmin = req.session.user.isAdmin;
+	var userId = req.user.id;
+	var loggedUserId = req.session.user.id;
+
+	if(isAdmin && userId !== loggedUserId){
+		next();
+	} else {
+		console.log("Ruta prohibida: no es el usuario loggeado, ni un admin");
+		res.send(403);
+	}
+};
 
 // GET /users
 exports.index = function(req, res, next) {
