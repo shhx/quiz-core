@@ -12,8 +12,9 @@ router.get('/', function(req, res, next) {
 });
 
 // autoloads
-router.param('quizId', quizController.load); 
-router.param('userId', userController.load); 
+router.param('quizId', 		quizController.load); 
+router.param('userId', 		userController.load); 
+router.param('commentId',	commentController.load); 
 
 //Question pages
 router.get('/quizzes.:format?', 					quizController.index);
@@ -28,6 +29,8 @@ router.delete('/quizzes/:quizId(\\d+)',				sessionController.loginRequired, quiz
 //Comment pages
 router.get('/quizzes/:quizId(\\d+)/comments/new', 	sessionController.loginRequired, commentController.new);
 router.post('/quizzes/:quizId(\\d+)/comments', 		sessionController.loginRequired, commentController.create);
+router.put('/quizzes/:quizId(\\d+)/comments/:commentId(\\d+)/accept', 		sessionController.loginRequired, 
+																			commentController.accept);
 
 //User pages
 router.get('/users', 								userController.index); //user list
