@@ -1,45 +1,38 @@
 *{ margin: 0; padding: 0; }
 
-body{ font: 16px Georgia, serif; 
-	color: white;
+body{ 
+  padding-top:20px;
+  font: 16px Georgia, serif; 
+  color: #aaaaaa;
+  background: #333333;
 }
 
-.page{ 
-	margin: 2% auto; 
-	color: white;
+
+footer {
+  text-align: center; 
+  padding-top: 5px; 
+  border-radius: 5px; 
+  margin-top: 20px;
 }
 
-.main{ border: 1px solid #999; 
-	padding: 1%;
-	margin-bottom: 1px;
-	color: black;
-	background: #eee;
+.jumbotron{
+  background: #222;
 }
 
-a{ color: #00B7FF; }
-
-ul{
-	list-style: none; 
-}
-section > div { 
-	padding: 20px; 
+.login{
+  background-color: #222;
+  border: none;
+  color: #aaaaaa;
 }
 
-header { 
-	text-align: center;
+.main{ 
+  /*border: 1px solid #999; */
+  padding: 1%;
+  margin-bottom: 1px;
+  background: #222;
+  border-radius: 5px; 
 }
-nav { 
-	text-align: center;
-}
-section { 
-	text-align: left;
-}
-footer { 
-	text-align: center;
-}
-nav a  { 
-	margin: 0px 10px 0px 0px;
-}
+
 
 .right{
   float: right;
@@ -56,19 +49,19 @@ nav a  {
 }
 
 #flashinfo h3 {
-    text-align: left;
-    font-weight: bold;
-    padding: 5px 5px 5px 15px;
-    font-size: 12px;
-    margin: -7px;
-    margin-bottom: 0px;
-    background-color: #00c;
+  text-align: left;
+  font-weight: bold;
+  padding: 5px 5px 5px 15px;
+  font-size: 12px;
+  margin: -7px;
+  margin-bottom: 0px;
+  background-color: #00c;
 }
 
 #flashinfo ul li {
-    margin: 5px 5px 5px 15px;
-    font-size: 12px;
-    list-style: square; 
+  margin: 5px 5px 5px 15px;
+  font-size: 12px;
+  list-style: square; 
 }
 
 
@@ -83,19 +76,19 @@ nav a  {
 }
 
 #flashsuccess h3 {
-    text-align: left;
-    font-weight: bold;
-    padding: 5px 5px 5px 15px;
-    font-size: 12px;
-    margin: -7px;
-    margin-bottom: 0px;
-    background-color: #0c0;
+  text-align: left;
+  font-weight: bold;
+  padding: 5px 5px 5px 15px;
+  font-size: 12px;
+  margin: -7px;
+  margin-bottom: 0px;
+  background-color: #0c0;
 }
 
 #flashsuccess ul li {
-    margin: 5px 5px 5px 15px;
-    font-size: 12px;
-    list-style: square; 
+  margin: 5px 5px 5px 15px;
+  font-size: 12px;
+  list-style: square; 
 }
 
 #flasherror {
@@ -109,17 +102,17 @@ nav a  {
 }
 
 #flasherror h3 {
-    text-align: left;
-    font-weight: bold;
-    padding: 5px 5px 5px 15px;
-    font-size: 12px;
-    margin: -7px;
-    margin-bottom: 0px;
-    background-color: #c00;
+  text-align: left;
+  font-weight: bold;
+  padding: 5px 5px 5px 15px;
+  font-size: 12px;
+  margin: -7px;
+  margin-bottom: 0px;
+  background-color: #c00;
 }
 
 #flasherror ul li {
-    margin: 5px 5px 5px 15px;
-    font-size: 12px;
-    list-style: square;
+  margin: 5px 5px 5px 15px;
+  font-size: 12px;
+  list-style: square;
 }
