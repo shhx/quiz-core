@@ -67,7 +67,16 @@ exports.show = function(req, res, next) {
 			res.json(req.quiz);
 			return;
 	}
-	res.render('quizzes/show', {quiz: req.quiz, answer: answer});
+	// Get users to show comments authors
+	models.User.findAll()
+	.then(function(users) {
+		var userlist = {};
+		for (var i = 0; i < users.length; i++) {
+    		userlist[users[i].id] = users[i];
+		}
+		res.render('quizzes/show', {quiz: req.quiz, answer: answer, userlist: userlist});
+	}) 
+	.catch(function(error) { next(error);});
 };
 
 // GET /check
