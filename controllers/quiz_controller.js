@@ -9,7 +9,9 @@ var cloudinary_image_options = { crop: 'limit', width: 200, height: 200, radius:
 
 // Autoload :quizId
 exports.load = function(req, res, next, quizId){
-	models.Quiz.findById(quizId, {include: [models.Comment, models.Attachment]})
+	// models.Quiz.findById(quizId, {include: [models.Comment, models.Attachment]})
+	models.Quiz.findById(quizId, {include: [models.Attachment, 
+											{model:models.Comment, include:[{model:models.User, as:'Author'}]}]})
 	.then(function(quiz){
 		if (quiz) {
 			req.quiz = quiz;
@@ -70,11 +72,7 @@ exports.show = function(req, res, next) {
 	// Get users to show comments authors
 	models.User.findAll()
 	.then(function(users) {
-		var userlist = {};
-		for (var i = 0; i < users.length; i++) {
-    		userlist[users[i].id] = users[i];
-		}
-		res.render('quizzes/show', {quiz: req.quiz, answer: answer, userlist: userlist});
+		res.render('quizzes/show', {quiz: req.quiz, answer: answer});
 	}) 
 	.catch(function(error) { next(error);});
 };

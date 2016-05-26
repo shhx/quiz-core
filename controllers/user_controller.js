@@ -4,7 +4,8 @@ var Sequelize = require('sequelize');
 
 // Autoload el user asociado a :userId
 exports.load = function(req, res, next, userId) {
-    models.User.findById(userId).then(function(user) {
+    models.User.findById(userId)
+    .then(function(user) {
             if (user) {
                 req.user = user;
                 next();
