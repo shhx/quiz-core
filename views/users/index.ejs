@@ -28,6 +28,6 @@
 	<% }; %>
 </table>
 
-<% if (session.user){ %>
+<% if (session.user && session.user.isAdmin){ %>
 	<a href="/users/new"><button type="button">Crear usuario</button></a>
 <% }; %>
