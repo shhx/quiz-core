@@ -25,6 +25,11 @@ footer {
   color: #aaaaaa;
 }
 
+.list{
+  background-color: #333333;
+  color: #aaaaaa;
+}
+
 .main{ 
   /*border: 1px solid #999; */
   padding: 1%;
@@ -33,6 +38,15 @@ footer {
   border-radius: 5px; 
 }
 
+.btn-space {
+  margin-right: 5px;
+}
+
+.no-margin{
+  margin-right: 0px;
+  margin-left: 0px;
+
+}
 
 .right{
   float: right;

@@ -1,33 +1,42 @@
+ <div class="container-fluid">
+ 	
+ 	<div class="row">
+ 		<div class="col-lg-7 col-md-offset-3">
+ 			<div class="panel">
+ 				<div class="panel-heading login">
+ 					<h3 class="panel-title">Usuarios:</h3>
+ 				</div>
+ 				<div class="panel-body login">
+ 					<ul class="list-group">
+ 						<% for (var i in users) { %>
+ 						<li class="list-group-item list">
+ 							<div class="row no-margin">
+ 								<span class="glyphicon glyphicon-user"></span> 
+ 								<a href="/users/<%= users[i].id %>" > <%= users[i].username %></a>
+ 								<span><%= users[i].isAdmin ? "(admin)" : "" %></span>
+ 								<div class="col-sm-3 pull-right">
+ 									<div class="btn-group">
+ 										<% if (session.user){ %>
+	 										<% if (session.user.isAdmin || session.user.id === users[i].id){ %>
+	 											<a href="/users/<%= users[i].id %>/edit" type="button" class="btn btn-sm btn-info "> Editar</a>
+	 										<% } %>
+	 										<% if (session.user.isAdmin && session.user.id !== users[i].id){ %>
+	 											<a href="/users/<%= users[i].id %>?_method=DELETE" type="button" class="btn btn-sm btn-info "
+	 											onClick="return confirm('Borrar cuenta: <%= users[i].username %>');">Borrar</a> 
+	 										<% } %>
+ 										<% } %>
+ 										</div>
+ 									</div>
+ 									</div>
+ 							</li>
+ 						<% }; %>
+ 						</ul>
+ 						<% if (session.user && session.user.isAdmin){ %>
+ 						<a href="/users/new"><button type="button" class="btn btn-md btn-info">Crear usuario</button></a>
+ 						<% }; %>
+ 					</div>
+ 				</div>
+ 			</div>
+ 		</div>
+ </div>
 
-<h2> Usuarios </h2>
-
-<table>
-	<% for (var i in users) { %>
-	<tr>
-
-		<td>
-		 <a href="/users/<%= users[i].id %>" > <%= users[i].username %> </a>
-		 <%= users[i].isAdmin ? "(admin)" : "" %>
-		</td>
-
-		<% if (session.user){ %>
-			<td>
-				<% if (session.user.isAdmin || session.user.id === users[i].id){ %>
-					<a href="/users/<%= users[i].id %>/edit"> Editar </a>
-				<% } %>
-			</td>
-
-			<td>
-				<% if (session.user.isAdmin && session.user.id !== users[i].id){ %>
-					<a href="/users/<%= users[i].id %>?_method=DELETE" 
-					onClick="return confirm('Borrar cuenta: <%= users[i].username %>');">Borrar</a> 
-				<% } %>
-			</td>
-		<% } %>
-	</tr>
-	<% }; %>
-</table>
-
-<% if (session.user && session.user.isAdmin){ %>
-	<a href="/users/new"><button type="button">Crear usuario</button></a>
-<% }; %>
