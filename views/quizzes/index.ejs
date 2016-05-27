@@ -11,8 +11,51 @@
 			<a href="/quizzes/new"><button type="button" class="btn btn-primary">Crear pregunta</button></a>
 		<% } %>
 	</div>
+	<!-- Right column -->
 	<div class="col-sm-8">
-	<table class="table table-condensed">
+		<div class="row">
+			<div class="col-lg-10">
+				<div class="panel">
+					<div class="panel-heading login">
+					<h3 class="panel-title">Preguntas:</h3>
+					</div>
+					<div class="panel-body login">
+						<ul class="list-group">
+							<% for (var i in quizzes) { %>
+							<li class="list-group-item list">
+								<div class="row no-margin">
+									<% if (quizzes[i].Attachment) { %>
+										<img src="<%= quizzes[i].Attachment.url %>" class="img-rounded" width="50px"/>
+									<% } else { %>
+										<img src="/images/question.png" class="img-circle" width="50px"/>
+									<% } %>
+									<a href="/quizzes/<%= quizzes[i].id %>"><%= quizzes[i].question %></a>
+									<div class="col-sm-3 pull-right">
+										<div class="btn-group">
+											<% if (session.user){ %>
+												<% if (session.user.isAdmin || session.user.id === quizzes[i].id){ %>
+													<a href="/quizzes/<%= quizzes[i].id %>/edit"  type="button" 
+													class="btn btn-sm btn-primary">Editar</a>
+												<% } %>
+												<% if (session.user.isAdmin && session.user.id !== quizzes[i].id){ %>
+													<a href="/quizzes/<%= quizzes[i].id %>?_method=DELETE"  type="button" 
+													class="btn btn-sm btn-primary"
+													onClick="return confirm("Borrar: <%= quizzes[i].question %>");">Borrar</a>
+												<% } %>
+											<% } %>
+										</div>
+									</div>
+								</div>
+							</li>
+							<% }; %>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+	<!-- <table class="table table-condensed">
 		<% for (var i in quizzes) { %>        
 		<tr>
 			<td>
@@ -40,6 +83,6 @@
 			<% } %>
 		</tr> 
 		<% } %>
-	</table>
+	</table> -->
 	</div>
 </div>

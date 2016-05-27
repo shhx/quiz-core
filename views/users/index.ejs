@@ -17,26 +17,26 @@
  								<div class="col-sm-3 pull-right">
  									<div class="btn-group">
  										<% if (session.user){ %>
-	 										<% if (session.user.isAdmin || session.user.id === users[i].id){ %>
-	 											<a href="/users/<%= users[i].id %>/edit" type="button" class="btn btn-sm btn-info "> Editar</a>
-	 										<% } %>
-	 										<% if (session.user.isAdmin && session.user.id !== users[i].id){ %>
-	 											<a href="/users/<%= users[i].id %>?_method=DELETE" type="button" class="btn btn-sm btn-info "
-	 											onClick="return confirm('Borrar cuenta: <%= users[i].username %>');">Borrar</a> 
-	 										<% } %>
+ 										<% if (session.user.isAdmin || session.user.id === users[i].id){ %>
+ 										<a href="/users/<%= users[i].id %>/edit" type="button" class="btn btn-sm btn-primary "> Editar</a>
  										<% } %>
- 										</div>
+ 										<% if (session.user.isAdmin && session.user.id !== users[i].id){ %>
+ 										<a href="/users/<%= users[i].id %>?_method=DELETE" type="button" class="btn btn-sm btn-primary "
+ 											onClick="return confirm('Borrar cuenta: <%= users[i].username %>');">Borrar</a> 
+ 											<% } %>
+ 											<% } %>
  									</div>
- 									</div>
- 							</li>
+ 								</div>
+ 							</div>
+ 						</li>
  						<% }; %>
- 						</ul>
- 						<% if (session.user && session.user.isAdmin){ %>
- 						<a href="/users/new"><button type="button" class="btn btn-md btn-info">Crear usuario</button></a>
- 						<% }; %>
- 					</div>
+ 					</ul>
+ 					<% if (session.user && session.user.isAdmin){ %>
+ 					<a href="/users/new"><button type="button" class="btn btn-md btn-primary">Crear usuario</button></a>
+ 					<% }; %>
  				</div>
  			</div>
  		</div>
+ 	</div>
  </div>
 

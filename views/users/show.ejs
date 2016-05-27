@@ -1,34 +1,30 @@
-<h2>Usuario</h2>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-4 col-md-offset-4">
+			<div class="login-panel panel">
+				<div class="panel-heading login">
+					<h3 class="panel-title">Usuario:</h3>
+				</div>
+				<div class="panel-body login"> 
+					<div class="form-group">
+						<label  class="">Username: <%= user.username %></label>
+					</div>
+					<div class="form-group">
+						<label class="rem">Es Administrador: <%= user.isAdmin ? "Si" : "No" %></label>
+					</div>
+					<% if (session.user) { %>
+						<% if (session.user.isAdmin || session.user.id === user.id) { %>
+							<a href="/users/<%= user.id %>/edit" type="button" class="btn btn-sm btn-primary">Editar</a>
+						<% } %>
+						<% if (session.user.isAdmin && session.user.id !== user.id) { %>
+							<a href="/users/<%= user.id %>?_method=DELETE" type="button" class="btn btn-sm btn-primary"
+								onClick="return confirm('Borrar cuenta: <%= user.username %>');">Borrar</a>
+						<% } %>
+					<% } %>
+					<a href="/users" type="button" class="btn btn-sm btn-primary">Volver</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
 
-<p>
-  <b>Username:</b>
-  <%= user.username %>
-</p>
-
-<p>
-  <b>Es Administrador:</b>
-  <%= user.isAdmin ? "Si" : "No" %>
-</p>
-
-<% if (session.user) { %>
-  <p>
-  <% if (session.user.isAdmin || session.user.id === user.id) { %>
-	  <a href="/users/<%= user.id %>/edit"> 
-	    <button type="button"> Editar </button>
-	  </a>
-	<% } %>
-
-	<% if (session.user.isAdmin && session.user.id !== user.id) { %>
-	  <a href="/users/<%= user.id %>?_method=DELETE"> 
-	    <button type="button"
-	            onClick="return confirm('Borrar cuenta: <%= user.username %>');">
-	       Borrar 
-	    </button>
-	  </a>
-	<% } %>
-	</p>
-<% } %>
-
-<a href="/users"> 
-   <button type="button">Volver</button>
-</a>
