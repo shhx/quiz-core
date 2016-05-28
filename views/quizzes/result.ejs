@@ -1,6 +1,4 @@
- <p>
+<div class="well list">
  	La respuesta <strong> <%= answer %> </strong> es <%= result %>.
- </p>
- <p>
- 	 <a href="/quizzes/<%= quiz.id %>?answer=<%= answer %>"> Inténtelo otra vez </a>
- </p>
+</div>
+<a href="/quizzes/<%= quiz.id %>?answer=<%= answer %>" type="button" class="btn btn-md btn-primary"> Inténtelo otra vez </a>

@@ -1,36 +1,46 @@
-<p>
-	<form method="get" action="/quizzes/<%= quiz.id %>/check">        
-		<p>
-			Pregunta: <%= quiz.question %>
-		</p>
-		
-		<% if (quiz.Attachment) { %>
-			<img src="<%= quiz.Attachment.url %>" width="50px"/>
-		<% } else { %>
-			<img src="/images/question.png" width="50px"/>
-		<% } %>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-7 col-md-offset-3">
+			<div class="login-panel panel">
+				<div class="panel-heading login">
+					<h3 class="panel-title">Pregunta: <%= quiz.question %></h3>
+				</div>
+				<div class="panel-body login"> 
+					<form role="form" method="get" action="/quizzes/<%= quiz.id %>/check">        
+						<div class="form-group">
+							<% if (quiz.Attachment) { %>
+							<img src="<%= quiz.Attachment.url %>" class="img-rounded" width="50px"/>
+							<% } else { %>
+							<img src="/images/question.png" class="img-circle" width="50px"/>
+							<% } %>
+						</div>
+						<div class="form-group form-inline">
+							<input type="text" name="answer" value="<%= answer %>" class="form-control" placeholder="Respuesta" />
+							<button type="submit" class="btn btn-md btn-primary">Comprobar</button>
+						</div>
+					</form>
+					<% if (session.user) { %>
+						<a href="/quizzes/<%= quiz.id %>/comments/new" type="button" class="btn btn-md btn-primary">Nuevo comentario</a>
+					<% } %>
+					<a href="/quizzes" type="button" class="btn btn-md btn-primary">Volver</a>
 
-		<p>
-			<input type="text" name="answer" value="<%= answer %>" placeholder="Respuesta" />
-			<input type="submit" value="Comprobar">
-		</p>
-	</form>
-</p>
-<% if (session.user) { %>
-	<p> <a href="/quizzes/<%= quiz.id %>/comments/new"><button>Nuevo comentario</button></a></p>
-<% } %>
-<p><strong>Comentarios:</strong></p>
-
-<ul>
-	<% for (var i in quiz.Comments) { 
-		var comment = quiz.Comments[i];
-		if (comment.accepted) { %>
-			<li> <%= comment.text %> - <strong><%= comment.Author.username %></strong> </li>
-		<% } else if (session.user && (session.user.isAdmin || quiz.AuthorId === session.user.id)) { %>
-			<li> <%= comment.text %> - <strong><%= comment.Author.username %></strong> </li>
-			<a href="/quizzes/<%= quiz.id %>/comments/<%= comment.id %>/accept?_method=PUT">
-			<button>Aceptar</button>
-			</a>
-		<% } %>
-	<% } %>
-</ul>
+					<h3>Comentarios:</h3>
+					<ul class="list-group list">
+						<% for (var i in quiz.Comments) { 
+							var comment = quiz.Comments[i];
+							if (comment.accepted) { %>
+								<li class="list-group-item list"> <%= comment.text %> - <strong><%= comment.Author.username %></strong> </li>
+							<% } else if (session.user && (session.user.isAdmin || quiz.AuthorId === session.user.id)) { %>
+							<li class="list-group-item list"> 
+								<%= comment.text %> - <strong><%= comment.Author.username %></strong> 
+								<a href="/quizzes/<%= quiz.id %>/comments/<%= comment.id %>/accept?_method=PUT"
+									class="btn btn-sm btn-primary">Aceptar</a>
+							</li>
+							<% } %>
+						<% } %>
+						</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

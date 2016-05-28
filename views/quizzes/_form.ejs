@@ -1,13 +1,15 @@
-<label for="preg">Pregunta:</label>
-<input type="text" id="preg" name="question" value="<%= quiz.question %>" placeholder="Pregunta" /> <p>
-
-<label for="resp">Respuesta:</label>
-<input type="text" id="resp" name="answer" value="<%= quiz.answer %>" placeholder="Respuesta" /> <p>
-
-<label for="img">Image:</label>
-<input type="file" id="img" accept="image/*" name="image" /> <p>
-
-<a href="/quizzes"><button type="button">Cancelar</button></a>
-
-<input type="submit" value="Salvar"
-		onclick="this.disabled = true; this.value = 'Enviando...'; this.form.submit();">
+<div class="form-group">
+	<label for="preg">Pregunta:</label>
+	<input type="text" id="preg" name="question" class="form-control" value="<%= quiz.question %>" placeholder="Pregunta" /> 
+</div>
+<div class="form-group">
+	<label for="resp">Respuesta:</label>
+	<input type="text" id="resp" name="answer" class="form-control" value="<%= quiz.answer %>" placeholder="Respuesta" />
+</div>
+<div class="form-group">
+	<label for="img">Image:</label>
+	<input type="file" id="img" accept="image/*" class="btn" name="image" />
+</div>
+<button type="submit" class="btn btn-md btn-success" value="salvar" 
+	onclick="this.disabled = true; this.value = 'Enviando...'; this.form.submit();">Guardar</button>
+<a href="/quizzes" type="button" class="btn btn-md btn-success">Cancelar</a>

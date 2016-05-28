@@ -7,10 +7,10 @@
 				</div>
 				<div class="panel-body login"> 
 					<div class="form-group">
-						<label  class="">Username: <%= user.username %></label>
+						<label>Username: <%= user.username %></label>
 					</div>
 					<div class="form-group">
-						<label class="rem">Es Administrador: <%= user.isAdmin ? "Si" : "No" %></label>
+						<label>Es Administrador: <%= user.isAdmin ? "Si" : "No" %></label>
 					</div>
 					<% if (session.user) { %>
 						<% if (session.user.isAdmin || session.user.id === user.id) { %>

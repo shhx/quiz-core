@@ -21,7 +21,7 @@
  										<a href="/users/<%= users[i].id %>/edit" type="button" class="btn btn-sm btn-primary "> Editar</a>
  										<% } %>
  										<% if (session.user.isAdmin && session.user.id !== users[i].id){ %>
- 										<a href="/users/<%= users[i].id %>?_method=DELETE" type="button" class="btn btn-sm btn-primary "
+ 										<a href="/users/<%= users[i].id %>?_method=DELETE" type="button" class="btn btn-sm btn-primary"
  											onClick="return confirm('Borrar cuenta: <%= users[i].username %>');">Borrar</a> 
  											<% } %>
  											<% } %>
