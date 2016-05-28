@@ -174,7 +174,7 @@ exports.edit = function(req, res, next){
 //DELETE /quizzes/:quizId
 exports.destroy = function(req, res, next){
 	if (req.quiz.Attachment) {
-		cloudinary.api.delete(req.quiz.Attachment.public_id);
+		cloudinary.api.delete_resources(req.quiz.Attachment.public_id);
 	}
 
 	req.quiz.destroy()
@@ -252,11 +252,11 @@ function updateAttachment(req, uploadResult, quiz) {
 	.then(function (attachment) {
 		req.flash('success', 'Imagen nueva guardada con exito');
 		if (old_public_id) {
-			cloudinary.api.delete(old_public_id);
+			cloudinary.api.delete_resources(old_public_id);
 		}
 	})
 	.catch(function (error) {
 		req.flash('error', 'No se ha podido salvar la nueva imagen' + error.message);
-		cloudinary.api.delete(uploadResult.public_id);
+		cloudinary.api.delete_resources(uploadResult.public_id);
 	})
 }
