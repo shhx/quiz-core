@@ -54,36 +54,36 @@
 
 			<section>
 				<% if (messages.info) { %>
-				<article id='flashinfo'>
-					<h3>Información de interés:</h3>
-					<ul>
-						<% for (var i in messages.info) { %>
-						<li> <%= messages.info[i] %> </li>
+					<div class='row'>
+						<% for (var i in messages.info) { %>    
+							<div class="alert alert-warning"> 
+								<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+								<strong>Info!</strong> <%= messages.info[i] %> 
+							</div>
 						<% } %>
-					</ul>
-				</article>
+					</div>
 				<% } %>
 
 				<% if (messages.success) { %>
-				<article id='flashsuccess'>
-					<h3>Tareas completadas con éxito:</h3>
-					<ul>
+					<div class="row">
 						<% for (var i in messages.success) { %>
-						<li> <%= messages.success[i] %> </li>
+							<div class="alert alert-success"> 
+								<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+								<strong>Success!</strong> <%= messages.success[i] %> 
+							</div>
 						<% } %>
-					</ul>
-				</article>
+					</div>
 				<% } %>
 
 				<% if (messages.error) { %>
-				<article id='flasherror'>
-					<h3>Errores encontrados:</h3>
-					<ul>
+					<div class='row'>
 						<% for (var i in messages.error) { %>
-						<li> <%= messages.error[i] %> </li>
+							<div class="alert alert-danger"> 
+								<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+								<strong>Danger!</strong> <%= messages.error[i] %> 
+							</div>
 						<% } %>
-					</ul>
-				</article>
+					</div>
 				<% } %>
 			</section>
 		</div>
