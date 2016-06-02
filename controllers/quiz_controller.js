@@ -70,11 +70,7 @@ exports.show = function(req, res, next) {
 			return;
 	}
 	// Get users to show comments authors
-	models.User.findAll()
-	.then(function(users) {
-		res.render('quizzes/show', {quiz: req.quiz, answer: answer});
-	}) 
-	.catch(function(error) { next(error);});
+	res.render('quizzes/show', {quiz: req.quiz, answer: answer});
 };
 
 // GET /check
