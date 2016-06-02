@@ -8,6 +8,7 @@ var quizController = require('../controllers/quiz_controller.js');
 var commentController = require('../controllers/comment_controller.js');
 var userController = require('../controllers/user_controller.js');
 var sessionController = require('../controllers/session_controller.js');
+var statisticsController = require('../controllers/statistics_controller.js');
 
 //Home page
 router.get('/', function(req, res, next) {
@@ -70,6 +71,9 @@ router.delete('/users/:userId(\\d+)', 				sessionController.loginRequired,
 router.get('/session', sessionController.new); //login form
 router.post('/session', sessionController.create);
 router.delete('/session', sessionController.destroy);
+
+//Statictics pages
+router.get('/statistics', statisticsController.statistics);
 
 // Author page
 router.get('/author', function (req, res, next) {
