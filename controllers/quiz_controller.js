@@ -1,4 +1,4 @@
-var models = require('../models')
+var models = require('../models');
 var Sequelize = require('sequelize');
 var cloudinary = require('cloudinary');
 var fs = require('fs');
