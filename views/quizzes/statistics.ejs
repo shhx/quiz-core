@@ -6,7 +6,7 @@
 		var data = google.visualization.arrayToDataTable([['Preguntas', 'Comentarios'],['Preguntas con comentarios', <%= stats.quizzesWithComments %>], ['Preguntas sin comentarios', <%= stats.quizzesWithoutComments %>]]);
 		console.log(data)
 		var options = {
-			title: 'Estadisticas sobre comentarios',
+			title: 'Estadisticas sobre comentarios:',
 			pieHole: 0.5,
 		};
 
@@ -26,7 +26,7 @@
 		</div>
 	</div>
 	<div class="col-md-6">
-		<div class="login" id="donutchart" style="width: 500px; height: 400px;"></div>
+		<div class="login" id="donutchart" style="width: 400px; height: 300px;"></div>
 	</div>
 	
 </div>
